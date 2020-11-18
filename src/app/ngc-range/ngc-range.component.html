@@ -1,0 +1,14 @@
+<div class="ngc-slider">
+  <div class="ngc-value low-value">
+    <input *ngIf="editingLowValue" type="number" [(value)]="range.lowValue" (blur)="setLowValue($event)" (keyup.enter)="setLowValue($event)" lib-auto-focus>
+    <label *ngIf="!editingLowValue" (click)="editLowValue()">{{range.lowValue}}€</label>
+  </div>
+
+  <ngx-slider [(value)]="range.lowValue" [(highValue)]="range.highValue" [options]="options" (valueChange)="rangeHasChanged()" (highValueChange)="rangeHasChanged()"></ngx-slider>
+
+
+  <div class="ngc-value high-value">
+    <input *ngIf="editingHighValue" type="number" [(value)]="range.highValue" (blur)="setHighValue($event)" (keyup.enter)="setHighValue($event)" lib-auto-focus>
+    <label *ngIf="!editingHighValue" (click)="editHighValue()">{{range.highValue}}€</label>
+  </div>
+</div>

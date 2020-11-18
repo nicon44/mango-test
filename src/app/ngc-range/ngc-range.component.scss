@@ -1,0 +1,77 @@
+::ng-deep {
+  .ngc-slider{
+    .ngx-slider{
+
+      margin: 15px 0;
+
+      .ngx-slider-pointer:hover {
+        transform: scale(2);
+        cursor: grab;
+      }
+
+      .ngx-slider-pointer:active {
+        transform: scale(2);
+        cursor: grabbing;
+      }
+
+      .ngx-slider-pointer:focus {
+        outline: none;
+      }
+
+      .ngx-slider-pointer {
+        width: 13px;
+        height: 13px;
+        top: auto;
+        bottom: -5px;
+        background-color: #000000;
+      }
+
+      .ngx-slider-tick.ngx-slider-selected,
+      .ngx-slider-selection {
+        background: #000000;
+      }
+
+      .ngx-slider-pointer:after,
+      .ngx-slider-model-value,
+      .ngx-slider-model-high,
+      .ngx-slider-ceil,
+      .ngx-slider-floor,
+      .ngx-slider-combined {
+        display: none;
+      }
+
+      .ngx-slider-tick {
+        margin-left: 0;
+      }
+
+    }
+  }
+}
+
+$ngc-value-width: 70px;
+
+.ngc-slider{
+  display: flex;
+
+  .ngc-value{
+    margin-top: 7px;
+    width: $ngc-value-width;
+
+    input{
+      max-width: 90%;
+    }
+  }
+
+  .high-value{
+    margin-left: 5px;
+  }
+
+  .low-value{
+    margin-right: 5px;
+    text-align: right;
+  }
+
+  .ngx-slider{
+    width: calc(100% - #{$ngc-value-width} * 2);
+  }
+}
