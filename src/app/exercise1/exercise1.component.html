@@ -1,8 +1,1 @@
 <ngc-range *ngIf="min && max" [(ngModel)]="myRange" [min]="min" [max]="max" (rangeChange)="rangeChange($event)"></ngc-range>
-
-<button (click)="onClick()">click</button>
-
-<div *ngIf="myRange">
-  low: {{myRange.lowValue}}
-  high: {{myRange.highValue}}
-</div>

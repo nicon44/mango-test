@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngc-range-workspace": {
+    "mango-test": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngc-range-workspace",
+            "outputPath": "dist/mango-test",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -66,18 +66,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngc-range-workspace:build"
+            "browserTarget": "mango-test:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngc-range-workspace:build:production"
+              "browserTarget": "mango-test:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngc-range-workspace:build"
+            "browserTarget": "mango-test:build"
           }
         },
         "test": {
@@ -114,11 +114,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngc-range-workspace:serve"
+            "devServerTarget": "mango-test:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngc-range-workspace:serve:production"
+              "devServerTarget": "mango-test:serve:production"
             }
           }
         }
@@ -164,5 +164,5 @@
         }
       }
     }},
-  "defaultProject": "ngc-range-workspace"
+  "defaultProject": "mango-test"
 }

@@ -37,9 +37,7 @@ export class NgcRangeComponent implements OnInit, ControlValueAccessor {
 
   range: NgcRange = new NgcRange();
 
-  options: Options = {
-    noSwitching: true
-  };
+  options: Options;
 
   onChange = (_:any) => { };
   onTouch = () => { };
@@ -50,11 +48,16 @@ export class NgcRangeComponent implements OnInit, ControlValueAccessor {
 
   ngOnInit(): void {
 
+    this.options = {
+        noSwitching: true
+    };
+
     //check type
     if(this.type === NgcConstants.FIXED){
       //fixed type
       this.fixedType = true;
       if(this.values && this.values.length > 0){
+        this.sortValues();
         this.configureFixedType();
       }else{
         throw new Error("You need to specify input 'values' for fixed type.");
@@ -83,8 +86,12 @@ export class NgcRangeComponent implements OnInit, ControlValueAccessor {
     this.options.showTicks = true;
 
     //setting default range
-    this.range.lowValue = Math.min(...this.values);
-    this.range.highValue = Math.max(...this.values);
+    this.range.lowValue = this.values[0];
+    this.range.highValue = this.values[this.values.length - 1];
+  }
+
+  sortValues(){
+    this.values.sort((a,b) => a - b);
   }
 
   configureSteps(){
@@ -96,7 +103,7 @@ export class NgcRangeComponent implements OnInit, ControlValueAccessor {
   }
 
   setLowValue(event){
-    let newValue:number = event.srcElement.value;
+    let newValue:number = Number(event.srcElement.value);
 
     if(newValue > this.range.highValue){
       newValue = this.range.highValue;
@@ -107,7 +114,7 @@ export class NgcRangeComponent implements OnInit, ControlValueAccessor {
   }
 
   setHighValue(event){
-    let newValue:number = event.srcElement.value;
+    let newValue:number = Number(event.srcElement.value);
 
     if(newValue < this.range.lowValue){
       newValue = this.range.lowValue;
@@ -136,24 +143,15 @@ export class NgcRangeComponent implements OnInit, ControlValueAccessor {
 
   //ngModel binding:
 
-  /*onInput(value: NgcRange) {
-    console.log("on input")
-    this.range.lowValue = value.lowValue;
-    this.range.highValue = value.highValue;
-    this.onTouch();
-    this.onChange(this.range);
-  }*/
   writeValue(value: NgcRange): void {
     if (value) {
-      console.log("1", value);
       this.range = value;
     } else {
-      console.log("2");
       this.range.lowValue = this.min;
       this.range.highValue = this.max;
-      this.onTouch();
-      this.onChange(this.range);
     }
+    this.onTouch();
+    this.onChange(this.range);
   }
   registerOnChange(fn: any): void {
     this.onChange = fn;

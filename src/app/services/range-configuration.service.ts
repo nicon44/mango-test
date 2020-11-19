@@ -21,7 +21,7 @@ export  class RangeConfigurationService {
     })
   }
 
-  getStepsRange(): Promise<any> {
+  getStepsRange(): Promise<Array<number>> {
     return new Promise((resolve, reject) => {
       this.httpClient.get(this.stepsUrl)
         .subscribe((response: any) => {
@@ -29,7 +29,5 @@ export  class RangeConfigurationService {
       }, reject);
     })
   }
-
-
 
 }

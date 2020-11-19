@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Exercise2Component } from './exercise2.component';
+import {RangeConfigurationService} from '../services/range-configuration.service';
 
 describe('Exercise2Component', () => {
   let component: Exercise2Component;
@@ -8,7 +9,10 @@ describe('Exercise2Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ Exercise2Component ]
+      declarations: [ Exercise2Component ],
+        providers: [
+            {provide: RangeConfigurationService, useClass: RangeConfigurationServiceStub}
+        ]
     })
     .compileComponents();
   }));
@@ -22,4 +26,14 @@ describe('Exercise2Component', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
+
+class RangeConfigurationServiceStub{
+    getStepsRange(): Promise<Array<number>> {
+        return new Promise<Array<number>> ((resolve) => {
+            resolve([1, 2, 3, 4, 5]);
+        });
+    }
+
+}
