@@ -2,8 +2,7 @@
 
 For this exercise, I took as base the [@angular-slider/ngx-slider](https://angular-slider.github.io/ngx-slider/home) component and added the extra functionality.
 
-
-##Demo
+## Demo
 You can find a demo running at [http://mango.dulio.com.ar](http://mango.dulio.com.ar)
 
 ## Getting the project up and running in a development environment
